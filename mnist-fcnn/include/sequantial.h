@@ -1,9 +1,7 @@
 #pragma once
-#include <iostream>
 #include "layer.h"
 #include "tanh_layer.h"
 #include "softmax_layer.h"
-
 
 class sequential
 {
@@ -11,9 +9,8 @@ class sequential
 	tanh_layer hidden_;
 	softmax_layer output_;
 
-	using value_type = double;
-	using vec = vector<value_type>;
-	using matrix = vector<vector<value_type>>;
+	using vec = std::vector<double>;
+	using matrix = std::vector<std::vector<double>>;
 
 	void forward_pass(vec x);
 	void backward_pass(vec y);

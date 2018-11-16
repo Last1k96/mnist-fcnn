@@ -61,7 +61,7 @@ namespace utils {
 		return normal;
 	}
 
-	void print_duration(long long milliseconds)
+	void print_duration(const long long milliseconds)
 	{
 		std::cout << "Time: "
 			<< std::right

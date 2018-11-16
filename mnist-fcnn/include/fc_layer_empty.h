@@ -12,9 +12,9 @@ class fc_layer_empty : public fc_layer
 	}
 
 public:
-	explicit fc_layer_empty(vector<double>&& y)
+	explicit fc_layer_empty(std::vector<double>&& y)
 		: fc_layer(0, y.size())
 	{
-		neurons_ = std::forward<vector<double>>(y);
+		neurons_ = std::forward<std::vector<double>>(y);
 	}
 };

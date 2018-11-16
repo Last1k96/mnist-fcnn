@@ -3,13 +3,13 @@
 
 void fc_layer::init_weights(const int left_size, const int right_size, const double mean, const double sigma)
 {
-	weights_ = vector<vector<variable>>(right_size);
-	derivative_ = vector<double>(right_size, 0.0);
+	weights_ = std::vector<std::vector<variable>>(right_size);
+	derivative_ = std::vector<double>(right_size, 0.0);
 #pragma omp parallel for
 	for (auto i = 0; i < right_size; i++)
 	{
 		auto random_vec = utils::normal_distribution_vector(left_size, mean, sigma);
-		weights_[i] = vector<variable>(left_size);
+		weights_[i] = std::vector<variable>(left_size);
 		for (auto j = 0; j < left_size; j++)
 		{
 			weights_[i][j] = {random_vec[j], 0};

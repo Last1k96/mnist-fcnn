@@ -1,6 +1,5 @@
 #pragma once
 #include "layer.h"
-using namespace std;
 
 class fc_layer : public layer
 {
@@ -15,8 +14,8 @@ class fc_layer : public layer
 	virtual void compute_derivatives(const fc_layer& next) = 0;
 
 protected:
-	vector<double> derivative_;
-	vector<vector<variable>> weights_;
+	std::vector<double> derivative_;
+	std::vector<std::vector<variable>> weights_;
 	variable bias_ = {0, 0};
 
 public:
