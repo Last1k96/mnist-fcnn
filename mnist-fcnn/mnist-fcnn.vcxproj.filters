@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\tanh_layer.cpp" />
+    <ClCompile Include="src\fc_layer.cpp" />
+    <ClCompile Include="src\softmax_layer.cpp" />
+    <ClCompile Include="src\sequantial.cpp" />
+    <ClCompile Include="src\utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\fc_layer.h" />
+    <ClInclude Include="include\layer.h" />
+    <ClInclude Include="include\mnist_reader.h" />
+    <ClInclude Include="include\sequantial.h" />
+    <ClInclude Include="include\softmax_layer.h" />
+    <ClInclude Include="include\tanh_layer.h" />
+    <ClInclude Include="include\utils.h" />
+    <ClInclude Include="include\fc_layer_empty.h" />
+  </ItemGroup>
+</Project>
