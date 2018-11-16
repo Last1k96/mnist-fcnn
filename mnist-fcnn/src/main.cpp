@@ -12,11 +12,10 @@ int main(int argc, char* argv[])
 {
 	if (argc == 1)
 	{
-		auto file = fs::path(argv[0]);
 		cout << "Usage:\n";
-		cout << file.filename().string() << ' ';
+		cout << fs::path(argv[0]).filename().string() << ' ';
 		cout << "[MNIST_path] [epoch_count] [learning_rate] [hidden_layer_size] [batch_size] [train_count]\n\n";
-		cout << "Using default values\n";
+		cout << "Using default values:\n";
 	}
 
 	// default values
