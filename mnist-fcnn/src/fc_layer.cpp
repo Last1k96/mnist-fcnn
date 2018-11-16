@@ -20,7 +20,7 @@ void fc_layer::init_weights(const int left_size, const int right_size, const dou
 fc_layer::fc_layer(const size_t prev_size, const size_t size)
 	: layer(size)
 {
-	if (prev_size == 0) return;
+	if (prev_size == 0u) return;
 	init_weights(prev_size, size);
 }
 

@@ -20,11 +20,11 @@ int main(int argc, char* argv[])
 	}
 
 	// default values
-	auto MNIST_path = fs::path(argv[0]).remove_filename() / "mnist";
+	auto MNIST_path = fs::path("mnist");
 	auto epoch_count = 10;
-	auto learning_rate = 0.01;
-	auto hidden_size = 50u;
-	auto batch_size = 20;
+	auto learning_rate = 0.2;
+	auto hidden_size = 100u;
+	auto batch_size = 100;
 	auto train_count = 60000;
 
 	// reading params
