@@ -76,22 +76,5 @@ namespace utils {
 			<< std::setw(3)
 			<< milliseconds % 1000
 			<< '\n';
-
-		std::ofstream myfile;
-		myfile.open("test.txt", std::ios_base::app);
-
-		myfile << "Time: "
-			<< std::right
-			<< std::setfill('0')
-			<< std::setw(2)
-			<< milliseconds / (1000 * 60)
-			<< ":"
-			<< std::setw(2)
-			<< (milliseconds / 1000) % 60
-			<< "."
-			<< std::setw(3)
-			<< milliseconds % 1000
-			<< '\n';
-		myfile.close();
 	}
 }

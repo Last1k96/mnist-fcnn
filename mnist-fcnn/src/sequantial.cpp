@@ -89,13 +89,6 @@ void sequential::fit(const matrix& x_train, const matrix& y_train,
 		const auto [loss, acc] = evaluate(x_test, y_test);
 		std::cout << "\repoch #" << std::setw(2) << std::left << epoch
 			 << " loss: " << loss << ", acc: " << acc << '\n';
-		// log
-		std::ofstream myfile;
-		myfile.open("test.txt", std::ios_base::app);
-		myfile << std::fixed << std::setprecision(4);
-		myfile << "epoch #" << std::setw(2) << std::left << epoch
-			<< " loss: " << loss << ", acc: " << acc << '\n';
-		myfile.close();
 	}
 	
 	const auto finish = std::chrono::system_clock::now();
