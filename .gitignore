@@ -1,5 +1,4 @@
 .vs
-.git
 bin
 mnist-fcnn/mnist
 *.user
