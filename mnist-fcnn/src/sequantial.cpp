@@ -4,7 +4,6 @@
 #include <chrono>
 #include <iomanip>
 #include <iostream>
-#include <fstream>
 
 bool sequential::is_accurate(const vec& target, const vec& output)
 {
@@ -70,8 +69,7 @@ void sequential::fit(const matrix& x_train, const matrix& y_train,
 	const auto batch_count = static_cast<int>(std::ceil(train_size / double(batch_size)));
 
 	const auto start = std::chrono::system_clock::now();
-	
-	
+
 	for (auto epoch = 1; epoch <= epoch_count; epoch++)
 	{
 		for (auto batch = 0; batch < batch_count; batch++)
@@ -82,15 +80,15 @@ void sequential::fit(const matrix& x_train, const matrix& y_train,
 				backward_pass(y_train[batch * batch_size + test]);
 			}
 			adjust_weights(learning_rate / double(batch_size));
-			std::cout << "\repoch #" << std::setw(2) << std::left << epoch 
-				 << " batch #" << batch + 1 << "/" << batch_count;
+			std::cout << "\repoch #" << std::setw(2) << std::left << epoch
+				<< " batch #" << batch + 1 << "/" << batch_count;
 		}
 
 		const auto [loss, acc] = evaluate(x_test, y_test);
 		std::cout << "\repoch #" << std::setw(2) << std::left << epoch
-			 << " loss: " << loss << ", acc: " << acc << '\n';
+			<< " loss: " << loss << ", acc: " << acc << '\n';
 	}
-	
+
 	const auto finish = std::chrono::system_clock::now();
 
 	utils::print_duration(std::chrono::duration_cast<std::chrono::milliseconds>(finish - start).count());

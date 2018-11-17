@@ -7,8 +7,13 @@ protected:
 	std::vector<double> neurons_;
 
 public:
-	explicit layer(const size_t size) : neurons_(size) {}
-	explicit layer(std::vector<double> values) : neurons_{ std::move(values) } {}
+	explicit layer(const size_t size) : neurons_(size)
+	{
+	}
+
+	explicit layer(std::vector<double> values) : neurons_{std::move(values)}
+	{
+	}
 
 	layer(const layer& other) = default;
 	layer(layer&& other) noexcept = default;

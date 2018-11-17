@@ -8,7 +8,7 @@ void fc_layer::init_weights(const int left_size, const int right_size, const dou
 #pragma omp parallel for
 	for (auto i = 0; i < right_size; i++)
 	{
-		auto random_vec = utils::normal_distribution_vector(left_size, mean, sigma);
+		const auto random_vec = utils::normal_distribution_vector(left_size, mean, sigma);
 		weights_[i] = std::vector<variable>(left_size);
 		for (auto j = 0; j < left_size; j++)
 		{

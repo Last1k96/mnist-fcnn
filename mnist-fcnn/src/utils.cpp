@@ -4,15 +4,16 @@
 #include <iomanip>
 #include <fstream>
 
-namespace utils {
-	using std::vector;
+namespace utils
+{
+	using namespace std;
 
 	vector<vector<double>> to_categorical(vector<uint8_t> vec)
 	{
 		auto unique = vector<double>{};
 		for (const auto& val : vec)
 		{
-			if (std::find(begin(unique), end(unique), val) == end(unique))
+			if (find(begin(unique), end(unique), val) == end(unique))
 			{
 				unique.push_back(val);
 			}

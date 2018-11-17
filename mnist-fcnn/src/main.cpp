@@ -10,6 +10,9 @@ namespace fs = std::filesystem;
 
 int main(int argc, char* argv[])
 {
+	cout << std::fixed << std::setprecision(4);
+	srand(static_cast<unsigned>(time(nullptr)));
+
 	try
 	{
 		if (argc == 1)
@@ -22,7 +25,7 @@ int main(int argc, char* argv[])
 
 		// default values
 		auto MNIST_path = fs::path("mnist");
-		auto epoch_count = 10;
+		auto epoch_count = 2;
 		auto learning_rate = 0.2;
 		auto hidden_size = 100u;
 		auto batch_size = 100;
@@ -56,24 +59,21 @@ int main(int argc, char* argv[])
 		cout << "Batch size: " << batch_size << '\n';
 		cout << "Training images count: " << train_count << '\n';
 
-		cout << std::fixed << std::setprecision(4);
-		srand(static_cast<unsigned>(time(nullptr)));
-
 		cout << "Loading data...\n";
 
-		auto[train_images, train_labels] = mnist_reader::read(
+		auto [train_images, train_labels] = mnist_reader::read(
 			(MNIST_path / "train-images.idx3-ubyte").string(),
 			(MNIST_path / "train-labels.idx1-ubyte").string()
 		);
 
-		auto[test_images, test_labels] = mnist_reader::read(
+		auto [test_images, test_labels] = mnist_reader::read(
 			(MNIST_path / "t10k-images.idx3-ubyte").string(),
 			(MNIST_path / "t10k-labels.idx1-ubyte").string()
 		);
 
 		cout << "Loaded.\n\n";
 
-		const auto[random_images, random_labels] = utils::random_subset(train_images, train_labels, train_count);
+		const auto [random_images, random_labels] = utils::random_subset(train_images, train_labels, train_count);
 
 		const auto x_train = utils::normalize_image_set(random_images);
 		const auto y_train = utils::to_categorical(random_labels);
@@ -84,7 +84,7 @@ int main(int argc, char* argv[])
 		const auto input_size = x_train[0].size();
 		const auto num_classes = y_train[0].size();
 
-		auto model = sequential{ input_size, hidden_size, num_classes };
+		auto model = sequential{input_size, hidden_size, num_classes};
 		model.fit(x_train, y_train, x_test, y_test, epoch_count, learning_rate, batch_size);
 	}
 	catch (std::exception& e)
