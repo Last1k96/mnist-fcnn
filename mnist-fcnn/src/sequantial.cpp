@@ -3,6 +3,7 @@
 #include "fc_layer_empty.h"
 #include <chrono>
 #include <iomanip>
+#include <iostream>
 
 bool sequential::is_accurate(const vec& target, const vec& output)
 {
@@ -79,13 +80,13 @@ void sequential::fit(const matrix& x_train, const matrix& y_train,
 				backward_pass(y_train[batch * batch_size + test]);
 			}
 			adjust_weights(learning_rate / double(batch_size));
-			cout << "\repoch #" << std::setw(2) << std::left << epoch 
-				 << " batch #" << batch + 1 << "/" << batch_count;
+			std::cout << "\repoch #" << std::setw(2) << std::left << epoch
+				<< " batch #" << batch + 1 << "/" << batch_count;
 		}
 
 		const auto [loss, acc] = evaluate(x_test, y_test);
-		cout << "\repoch #" << std::setw(2) << std::left << epoch
-			 << " loss: " << loss << ", acc: " << acc << '\n';
+		std::cout << "\repoch #" << std::setw(2) << std::left << epoch
+			<< " loss: " << loss << ", acc: " << acc << '\n';
 	}
 
 	const auto finish = std::chrono::system_clock::now();

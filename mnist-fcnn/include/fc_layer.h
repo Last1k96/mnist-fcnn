@@ -1,6 +1,5 @@
 #pragma once
 #include "layer.h"
-using namespace std;
 
 class fc_layer : public layer
 {
@@ -10,18 +9,18 @@ class fc_layer : public layer
 		double delta;
 	};
 
-	void init_weights(int left_size, int right_size, double mean = 0.0, double sigma = 0.2);
 	virtual void apply_activation_function() = 0;
 	virtual void compute_derivatives(const fc_layer& next) = 0;
+	void init_weights(int left_size, int right_size, double mean = 0.0, double sigma = 0.2);
 
 protected:
-	vector<double> derivative_;
-	vector<vector<variable>> weights_;
+	std::vector<double> derivative_;
+	std::vector<std::vector<variable>> weights_;
 	variable bias_ = {0, 0};
 
 public:
 	explicit fc_layer(size_t prev_size, size_t size);
-	
+
 	void adjust_weights(double learning_rate);
 	void forward(const layer& prev);
 	void backward(const layer& prev, const fc_layer& next);
