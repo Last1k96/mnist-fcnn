@@ -54,6 +54,14 @@ int main(int argc, char* argv[])
 	cout << "Batch size: " << batch_size << '\n';
 	cout << "Training images count: " << train_count << '\n';
 
+	std::ofstream myfile;
+	myfile.open("test.txt", std::ios_base::app);
+	myfile << "\nEpoch count: " << epoch_count << '\n';
+	myfile << "Learning rate: " << learning_rate << '\n';
+	myfile << "Hidden layer size: " << hidden_size << '\n';
+	myfile << "Batch size: " << batch_size << '\n';
+	myfile.close();
+
 	cout << std::fixed << std::setprecision(4);
 	srand(static_cast<unsigned>(time(nullptr)));
 	try
