@@ -25,7 +25,7 @@ int main(int argc, char* argv[])
 
 		// default values
 		auto MNIST_path = fs::path("mnist");
-		auto epoch_count = 2;
+		auto epoch_count = 10;
 		auto learning_rate = 0.2;
 		auto hidden_size = 100u;
 		auto batch_size = 100;
